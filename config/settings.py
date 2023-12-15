@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework', #DRF 설정, 안해두면 html로  렌더함
+    'rest_framework', # DRF 설정, 안해두면 html로  렌더함
+    'corsheaders', # 배포용
     'accounts',
     'posts',
     'users',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # 배포용
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -87,6 +89,21 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+# CORS 관련 추가
+CORS_ALLOW_ALL_ORIGINS = True # 앱 클라이언트 배포 전이라 임시로만 해놓은 상태
+CORS_ALLOW_CREDENTIALS = True
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://127.0.0.1',
+#     'http://127.0.0.1:3000',
+#     'http://127.0.0.1:5173',
+
+#     'http://localhost',
+#     'http://localhost:3000',
+#     'http://localhost:5173',
+# ]
+
 
 DATABASES = {
     'default': {
@@ -131,8 +148,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # 배포용 static 파일 모으기
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #media폴더를 만들어 파일 모아줌
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # media폴더를 만들어 파일 모아줌
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
