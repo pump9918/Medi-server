@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 CORS_ALLOW_ALL_ORIGINS = True # 앱 클라이언트 배포 전이라 임시로만 해놓은 상태
 CORS_ALLOW_CREDENTIALS = True
 
-# CORS_ALLOWED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = [
 #     'http://127.0.0.1',
 #     'http://127.0.0.1:3000',
 #     'http://127.0.0.1:5173',
@@ -102,7 +102,7 @@ CORS_ALLOW_CREDENTIALS = True
 #     'http://localhost',
 #     'http://localhost:3000',
 #     'http://localhost:5173',
-# ]
+]
 
 
 DATABASES = {
