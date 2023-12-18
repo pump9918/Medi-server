@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'posts',
     'users',
     'ttsposts',
+    'chatbot', # 챗봇
     'drf_yasg',
     # dj_rest_auth
     'rest_framework.authtoken',
